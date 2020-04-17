@@ -1,48 +1,73 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { apiPath } from '../config';
+import { updateInput } from '../redux';
 import Styles from './input.module.scss';
 
-export default class Source extends React.Component {
+
+class Input extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasErrors: false,
-      list: [],
-      current:''
+      inputs: []
     };
     this.change = this.change.bind(this)
+    this.set = this.setInput.bind(this)
   }
   
   getList() {
-    fetch("http://localhost:3000/input/list")
+    fetch(apiPath+"/input/list")
     .then(res => res.json())
-    .then(res => this.setState({ list: res }))
+    .then(
+      res => {
+        this.setState({ inputs: res })
+      }
+    )
   }
   getCurrent() {
-    fetch("http://localhost:3000/input/current")
+    fetch(apiPath+"/input/current")
     .then(res => res.json())
-    .then(res => this.setState({ current: res }))
+    .then(res => {
+      this.props.updateInput(res.current);
+    })
   }
   setInput(input){
-      console.log(input);
-    fetch("http://localhost:3000/input/set/"+input)
+    fetch(apiPath+"/input/set/"+input)
     .then(res => res.json())
-    .then(res => this.getCurrent())
+    .then(res => {
+      this.props.updateInput(res.current);
+    })
   }
   change(event){
     this.setInput(event.target.value);
   }
   componentDidMount() {
     this.getList();
+    this.getCurrent();
   }
   render() {
     return (
       <div className={Styles.input}>
-          <select className={Styles.select} onChange={this.change} value={this.state.current.name}>
-          {this.state.list.map((item,index) =>
-              <option key={index} value={item}>{item}</option>
+          <select className={Styles.select} onChange={this.change} id={this.props.input}>
+          {this.state.inputs.map(({id,name},index) =>
+              <option selected={this.props.input === id && 'selected'} key={index} value={id}>{name}/{id}</option>
           )}
           </select>
       </div>
     );
   }
 }
+const mapStateToProps = state => ({
+  input: state.input,
+});
+
+const mapDispatchToProps = {
+  updateInput
+};
+
+const InputContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Input);
+
+export default InputContainer;

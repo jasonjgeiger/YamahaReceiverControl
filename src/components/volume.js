@@ -5,6 +5,8 @@ import {
   faVolumeDown,
   faVolumeMute
  } from '@fortawesome/free-solid-svg-icons'
+import { apiPath } from '../config';
+
 export default class Volume extends React.Component {
   constructor(props) {
     super(props);
@@ -12,10 +14,10 @@ export default class Volume extends React.Component {
     this.volumeDown = this.volumeDown.bind(this)
   }
   volumeUp() {
-      fetch("http://localhost:3000/volume/set/up")
+      fetch(apiPath+"/volume/set/up")
   }
   volumeDown() {
-    fetch("http://localhost:3000/volume/set/down")
+    fetch(apiPath+"/volume/set/down")
   }
   render() {
     return (

@@ -7,6 +7,7 @@ import {
   faArrowAltCircleDown,
   faDotCircle
  } from '@fortawesome/free-solid-svg-icons'
+import { apiPath } from '../config';
 import Styles from './remote.module.scss';
 
 export default class Remote extends React.Component {
@@ -25,19 +26,19 @@ export default class Remote extends React.Component {
     this.sel = this.sel.bind(this)
   }
   up(){
-    fetch("http://localhost:3000/remote/Up");
+    fetch(apiPath+"/remote/Up");
   }
   down(){
-    fetch("http://localhost:3000/remote/Down");
+    fetch(apiPath+"/remote/Down");
   }
   left(){
-    fetch("http://localhost:3000/remote/Left");
+    fetch(apiPath+"/remote/Left");
   }
   right(){
-    fetch("http://localhost:3000/remote/Right");
+    fetch(apiPath+"/remote/Right");
   }
   sel(){
-    fetch("http://localhost:3000/remote/Sel");
+    fetch(apiPath+"/remote/Sel");
   }
 
   componentDidMount() {

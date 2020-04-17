@@ -1,4 +1,6 @@
 import React from 'react';
+import { apiPath } from '../config';
+
 export default class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -8,13 +10,13 @@ export default class Menu extends React.Component {
     this.return = this.return.bind(this)
   }
   option(){
-    fetch("http://localhost:3000/menu/option");
+    fetch(apiPath+"/menu/option");
   }
   display(){
-    fetch("http://localhost:3000/menu/display");
+    fetch(apiPath+"/menu/display");
   }
   return(){
-    fetch("http://localhost:3000/remote/return");
+    fetch(apiPath+"/remote/return");
   }
   render() {
     return (

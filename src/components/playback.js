@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faStop, faPause } from '@fortawesome/free-solid-svg-icons'
+import { apiPath } from '../config';
 
 export default class Playback extends React.Component {
   constructor(props) {
@@ -11,13 +12,13 @@ export default class Playback extends React.Component {
     this.stop = this.stop.bind(this)
   }
   play(){
-    fetch("http://localhost:3000/playback/play");
+    fetch(apiPath+"/playback/play");
   }
   pause(){
-    fetch("http://localhost:3000/playback/pause");
+    fetch(apiPath+"/playback/pause");
   }
   stop(){
-    fetch("http://localhost:3000/playback/stop");
+    fetch(apiPath+"/playback/stop");
   }
   
   
