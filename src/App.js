@@ -1,24 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Styles from './app.module.scss';
+import Status from './components/status';
+import Volume from './components/volume';
+import Input from './components/input';
+import Remote from './components/remote';
+import Playback from './components/playback';
+import Menu from './components/menu';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={Styles.app}>
+      <header className={Styles.header}>
+        <Status />
+      </header>      
+      <section className={Styles.section}>
+        <Volume/>
+      </section>
+      <section className={Styles.section}>
+        <Playback />
+      </section>
+      <section className={Styles.section}>
+        <Remote />
+      </section>
+      <section className={Styles.section}>
+        <Menu />
+      </section>
+      <section className={Styles.section}>  
+        <Input />
+      </section>
     </div>
   );
 }
