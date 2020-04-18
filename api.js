@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express')
 const cors = require('cors')
 const YamahaAPI = require("yamaha-nodejs")
 //
 const app = express()
 const port = 3000
-const yamaha = new YamahaAPI("192.168.187.110");
+const yamaha = new YamahaAPI(RECEIVER_ADDR);
 //
 app.use(cors({credentials: true, origin: true}))
 
