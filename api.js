@@ -88,23 +88,29 @@ app.get('/volume/mute', (request, response) => {
     if(muted){
       yamaha.muteOff().then(function(){
         yamaha.getVolume().then(function(volumeNum){
-          response.send(
-            {
-              volume:volumeNum,
-              formatted:(volumeNum/10).toFixed(1)
-            }
-          )
+          yamaha.isMuted().then(function(muted){
+            response.send(
+              {
+                muted:muted,
+                volume:volumeNum,
+                formatted:(volumeNum/10).toFixed(1)
+              }
+            )
+          })
         })
       })
     }else{
       yamaha.muteOn().then(function(){
-        yamaha.getVolume().done(function(volumeNum){
-          response.send(
-            {
-              volume:volumeNum,
-              formatted:(volumeNum/10).toFixed(1)
-            }
-          )
+        yamaha.getVolume().then(function(volumeNum){
+          yamaha.isMuted().then(function(muted){
+            response.send(
+              {
+                muted:muted,
+                volume:volumeNum,
+                formatted:(volumeNum/10).toFixed(1)
+              }
+            )
+          })
         })
       })
     }
