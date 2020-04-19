@@ -38,21 +38,80 @@ app.get('/info', (request, response)  => {
   })
 })
 app.get('/volume/current', (request, response)  => {
-  yamaha.getVolume().done(function(basicInfo){
+  yamaha.getVolume().then(function(volumeNum){
+    yamaha.isMuted().then(function(muted){
       response.send(
         {
-          volume:basicInfo,
-          formatted:(basicInfo/10).toFixed(1)
+          muted:muted,
+          volume:volumeNum,
+          formatted:(volumeNum/10).toFixed(1)
         }
       )
+    })
   })
 })
 
-app.get('/volume/set/up', (request, response) => {
-  yamaha.volumeUp(20)
+app.get('/volume/up', (request, response) => {
+  yamaha.volumeUp(20).then(function(){
+    yamaha.getVolume().then(function(volumeNum){
+      yamaha.isMuted().then(function(muted){
+        response.send(
+          {
+            muted:muted,
+            volume:volumeNum,
+            formatted:(volumeNum/10).toFixed(1)
+          }
+        )
+      })
+    })
+  })
 })
 
-app.get('/volume/set/down', (request, response) => {
+app.get('/volume/down', (request, response) => {
+  yamaha.volumeDown(20).then(function(){
+    yamaha.getVolume().then(function(volumeNum){
+      yamaha.isMuted().then(function(muted){
+        response.send(
+          {
+            muted:muted,
+            volume:volumeNum,
+            formatted:(volumeNum/10).toFixed(1)
+          }
+        )
+      })
+    })
+  })
+})
+
+app.get('/volume/mute', (request, response) => {
+  yamaha.isMuted().then(function(muted){
+    if(muted){
+      yamaha.muteOff().then(function(){
+        yamaha.getVolume().then(function(volumeNum){
+          response.send(
+            {
+              volume:volumeNum,
+              formatted:(volumeNum/10).toFixed(1)
+            }
+          )
+        })
+      })
+    }else{
+      yamaha.muteOn().then(function(){
+        yamaha.getVolume().done(function(volumeNum){
+          response.send(
+            {
+              volume:volumeNum,
+              formatted:(volumeNum/10).toFixed(1)
+            }
+          )
+        })
+      })
+    }
+  })
+})
+
+app.get('/volume/to/:num', (request, response) => {
   yamaha.volumeDown(20)
 })
 
