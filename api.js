@@ -5,7 +5,7 @@ const YamahaAPI = require("yamaha-nodejs")
 //
 const app = express()
 const port = 3000
-const yamaha = new YamahaAPI(RECEIVER_ADDR);
+const yamaha = new YamahaAPI(process.env.RECEIVER_ADDR);
 //
 app.use(cors({credentials: true, origin: true}))
 

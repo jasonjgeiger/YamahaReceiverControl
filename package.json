@@ -18,7 +18,7 @@
     "yamaha-nodejs": "^0.9.6"
   },
   "scripts": {
-    "controls": "PORT=3001 react-scripts start",
+    "app": "PORT=3001 react-scripts start",
     "api": "PORT=3000 node api.js"
   },
   "browserslist": {
