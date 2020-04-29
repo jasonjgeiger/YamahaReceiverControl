@@ -11,6 +11,10 @@ app.use(cors({credentials: true, origin: true}))
 
 const zone = 'home'
 
+app.get('/', (request, response) => {
+  response.send({status:"API is running"})
+})
+
 app.get('/power/on', (request, response) => {
   yamaha.powerOn().then(function(){
     yamaha.isOn().done(function(basicInfo){
