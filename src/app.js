@@ -7,7 +7,7 @@ import { updatePower } from './redux';
 import favicon from './assets/favicon.ico';
 import touchicon from './assets/logo192.png';
 //
-import Styles from './app.module.scss';
+import Styles from './app.module.css';
 import Power from './components/power';
 import Status from './components/status';
 import Volume from './components/volume';
