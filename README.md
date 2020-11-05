@@ -9,8 +9,14 @@ Http server wrapping the yamaha-nodejs library to be used with web app
 - An .env file will need to be created to define the api url
 
 # Run on a Pi
+
+## INSTALL DEPENDENCIES
+- GIT
+- Node/NPM
+- Serve (npm install -g serve)
+
 ## APP
-pm2 start npm --name "yamaha-controls" run app
+pm2 serve build 3001
 
 ## API
 pm2 start node api.js

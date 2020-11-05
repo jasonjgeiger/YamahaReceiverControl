@@ -5,8 +5,8 @@
     line-height: 4rem;
     text-align: center;
     background:red;
-    svg{
-        min-width:2rem;
-        min-height:2rem;
-    }
+}
+.buttonStyle svg{
+    min-width:2rem;
+    min-height:2rem;
 }

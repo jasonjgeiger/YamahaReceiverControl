@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { apiPath } from '../config';
 import { updateInput } from '../redux';
-import Styles from './input.module.scss';
+import Styles from './input.module.css';
 
 
 class Input extends React.Component {
