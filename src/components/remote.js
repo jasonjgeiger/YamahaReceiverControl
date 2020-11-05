@@ -8,7 +8,7 @@ import {
   faDotCircle
  } from '@fortawesome/free-solid-svg-icons'
 import { apiPath } from '../config';
-import Styles from './remote.module.scss';
+import Styles from './remote.module.css';
 
 export default class Remote extends React.Component {
   constructor(props) {
