@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {buttonStyle} from './remote.module.scss';
 import { 
   faVolumeUp,
   faVolumeDown,
@@ -22,13 +23,13 @@ export default class Volume extends React.Component {
   render() {
     return (
       <div>
-          <button className="icon" onClick={this.volumeUp}>
+          <button className={buttonStyle} onClick={this.volumeUp}>
             <FontAwesomeIcon icon={faVolumeUp} />
           </button>
-          <button className="icon" onClick={this.volumeDown}>
+          <button className={buttonStyle} onClick={this.volumeDown}>
             <FontAwesomeIcon icon={faVolumeDown} />
           </button>
-          <button className="icon" onClick={this.volumeDown}>
+          <button className={buttonStyle} onClick={this.volumeDown}>
             <FontAwesomeIcon icon={faVolumeMute} />
           </button>
       </div>
