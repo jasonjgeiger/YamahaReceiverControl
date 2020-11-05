@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {buttonStyle} from './remote.module.scss';
+import {buttonStyle} from './remote.module.css';
 import { 
   faVolumeUp,
   faVolumeDown,
